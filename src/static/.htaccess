@@ -1,0 +1,61 @@
+# foxfotograf.pl – konfiguracja serwera (Apache / LiteSpeed)
+
+Options -Indexes
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Zawsze HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# www -> bez www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# Pliki techniczne nie są publiczne
+RewriteRule (^|/)\.ftp-deploy-sync-state\.json$ - [F,L]
+
+# Stare adresy z WordPressa -> nowa strona (linki z Google i wizytówek dalej działają)
+RewriteRule ^(oferta|oferta-slub)/?$                  /#slub [R=301,NE,L]
+RewriteRule ^sesja-komunia/?$                         /#komunia [R=301,NE,L]
+RewriteRule ^fotobudka/?$                             /#fotobudki [R=301,NE,L]
+RewriteRule ^(reprodukcje|studio)/?$                  /#uslugi [R=301,NE,L]
+RewriteRule ^kontakt/?$                               /#kontakt [R=301,NE,L]
+RewriteRule ^(strefa-klienta|galerie-klientow|komunia-sulmierzyce)/?$  /#strefa-klienta [R=301,NE,L]
+RewriteRule ^(ai|aparat)/?$                           / [R=301,L]
+RewriteRule ^fotobudka-retro/?$                       /aktualnosci/fotobudka-retro/ [R=301,L]
+RewriteRule ^twoje-wspomnienia-zasluguja-na-prywatnosc  /aktualnosci/prywatna-chmura-nextcloud/ [R=301,L]
+RewriteRule ocal-swoje-wspomnienia-cyfryzacja-kaset-vhs  /aktualnosci/cyfryzacja-kaset-vhs/ [R=301,L]
+RewriteRule ^haslo-klasyczna-zabawa-profesjonalna-jakosc  /aktualnosci/fotobudka-klasyczna-zabawa/ [R=301,L]
+RewriteRule ^(category|feed)(/.*)?$                   /aktualnosci/ [R=301,L]
+RewriteRule ^(wp-admin|wp-login\.php|xmlrpc\.php)     / [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "\.(avif|webp|jpe?g|png|svg|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml
+</IfModule>

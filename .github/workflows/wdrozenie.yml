@@ -1,0 +1,64 @@
+# Buduje stronę i wgrywa ją przez FTP na hosting IQHost po każdej zmianie
+# (również po zapisie w panelu Pages CMS).
+#
+# Wymagane sekrety repozytorium (Settings → Secrets and variables → Actions):
+#   FTP_SERVER    – adres serwera FTP z panelu IQHost
+#   FTP_USERNAME  – login konta FTP
+#   FTP_PASSWORD  – hasło konta FTP
+# Opcjonalna zmienna (zakładka „Variables”):
+#   FTP_DIR       – folder docelowy na serwerze, domyślnie ./ (katalog główny konta FTP)
+
+name: Wdrożenie na hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: wdrozenie
+  cancel-in-progress: false
+
+jobs:
+  wdrozenie:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Pamięć podręczna zdjęć
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: zdjecia-${{ hashFiles('src/img/**') }}
+          restore-keys: zdjecia-
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Sprawdź dane FTP
+        id: ftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -z "$FTP_SERVER" ]; then
+            echo "::warning::Brak sekretu FTP_SERVER – strona zbudowana, ale nie wgrana."
+            echo "gotowe=nie" >> "$GITHUB_OUTPUT"
+          else
+            echo "gotowe=tak" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wgraj przez FTP
+        if: steps.ftp.outputs.gotowe == 'tak'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./_site/
+          server-dir: ${{ vars.FTP_DIR || './' }}

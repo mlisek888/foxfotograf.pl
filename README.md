@@ -1,6 +1,6 @@
 # foxfotograf.pl
 
-Strona FoxFotograf (Marcin Lis): statyczna strona zbudowana w [Eleventy](https://www.11ty.dev/), hostowana na Netlify, edytowana przez [Pages CMS](https://app.pagescms.org).
+Strona FoxFotograf (Marcin Lis): statyczna strona zbudowana w [Eleventy](https://www.11ty.dev/), hostowana na IQHost, edytowana przez [Pages CMS](https://app.pagescms.org). Po każdej zmianie GitHub Actions buduje stronę i wgrywa ją przez FTP (`.github/workflows/wdrozenie.yml`).
 
 ## Jak edytować stronę (dla Marcina)
 
@@ -14,7 +14,9 @@ Strona FoxFotograf (Marcin Lis): statyczna strona zbudowana w [Eleventy](https:/
 
 Zdjęcia możesz wrzucać w pełnej rozdzielczości, prosto z aparatu. Strona sama zrobi z nich lekkie wersje (AVIF/WebP) w kilku rozmiarach.
 
-Zgłoszenia z formularzy (kontakt i potwierdzenie rezerwacji) przychodzą e-mailem z Netlify. Wszystkie są też w panelu Netlify → **Forms**.
+Zgłoszenia z formularzy (kontakt i potwierdzenie rezerwacji) przychodzą na adres e-mail ustawiony w **Ustawieniach strony → Dane kontaktowe**. Wysyła je skrypt `formularz.php` na hostingu.
+
+Jeśli zmiana nie pojawia się na stronie, zajrzyj na GitHubie w zakładkę **Actions**: czerwony krzyżyk oznacza błąd wgrywania.
 
 ## Dla programisty
 
@@ -28,6 +30,7 @@ npm run build    # gotowa strona w _site/
 - `src/_data/strona.json` – teksty i dane edytowalne w panelu
 - `src/wpisy/` – aktualności (Markdown)
 - `src/strony/` – regulamin, RODO
-- `src/static/_redirects` – przekierowania starych adresów z WordPressa
+- `src/static/.htaccess` – HTTPS, przekierowania starych adresów z WordPressa, cache
+- `src/formularz.njk` – skrypt PHP wysyłający formularze (generowany jako `/formularz.php`)
+- `.github/workflows/wdrozenie.yml` – budowanie i wgrywanie przez FTP (sekrety `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, zmienna `FTP_DIR`)
 - `.pages.yml` – konfiguracja panelu Pages CMS
-- Formularze działają przez Netlify Forms (`data-netlify="true"`).

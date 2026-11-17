@@ -1,0 +1,81 @@
+---
+permalink: /formularz.php
+eleventyExcludeFromCollections: true
+---
+<?php
+// Obsługa formularzy foxfotograf.pl (kontakt + potwierdzenie rezerwacji).
+// Plik generowany przy budowaniu strony – adres odbiorcy pochodzi z „Ustawień strony” w panelu.
+
+$ODBIORCA = {{ strona.kontakt.email | dump | safe }};
+$NADAWCA  = 'strona@foxfotograf.pl'; // adres w domenie – poprawia dostarczalność
+
+function bledna_strona($komunikat) {
+    http_response_code(400);
+    header('Content-Type: text/html; charset=utf-8');
+    echo '<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+       . '<title>Nie wysłano wiadomości</title><link rel="stylesheet" href="/css/style.css"></head><body>'
+       . '<div class="page-head"><div class="wrap"><span class="eyebrow">Formularz</span><h1>Nie udało się wysłać</h1>'
+       . '<p>' . htmlspecialchars($komunikat) . '</p>'
+       . '<p style="margin-top:28px"><a class="btn" href="javascript:history.back()" style="background:#d2a75a;color:#141210">Wróć do formularza</a></p>'
+       . '</div></div></body></html>';
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: /', true, 303); exit; }
+
+// Pułapka na boty: to pole jest ukryte, człowiek go nie wypełni.
+if (!empty($_POST['bot-field'])) { header('Location: /dziekuje/', true, 303); exit; }
+
+$formularze = [
+    'kontakt' => [
+        'temat' => 'Zapytanie ze strony',
+        'pola'  => ['imie' => 'Imię', 'kontakt' => 'Telefon lub e-mail', 'usluga' => 'Usługa', 'data' => 'Data wydarzenia', 'miejscowosc' => 'Miejscowość', 'wiadomosc' => 'Wiadomość'],
+        'wymagane' => ['imie', 'kontakt'],
+    ],
+    'potwierdzenie-rezerwacji' => [
+        'temat' => 'Potwierdzenie rezerwacji',
+        'pola'  => ['imie_nazwisko' => 'Imię i nazwisko', 'telefon' => 'Telefon', 'email' => 'E-mail', 'wydarzenie' => 'Data, miejsce i rodzaj wydarzenia', 'akceptacja_regulaminu' => 'Akceptacja regulaminu'],
+        'wymagane' => ['imie_nazwisko', 'telefon', 'email', 'wydarzenie', 'akceptacja_regulaminu'],
+    ],
+];
+
+$nazwa = $_POST['form-name'] ?? '';
+if (!isset($formularze[$nazwa])) bledna_strona('Nieznany formularz.');
+$f = $formularze[$nazwa];
+
+$dane = [];
+foreach ($f['pola'] as $klucz => $etykieta) {
+    $w = trim((string)($_POST[$klucz] ?? ''));
+    $w = mb_substr(str_replace(["\r\n", "\r"], "\n", $w), 0, 5000);
+    $dane[$klucz] = $w;
+}
+foreach ($f['wymagane'] as $klucz) {
+    if ($dane[$klucz] === '') bledna_strona('Uzupełnij pole: ' . $f['pola'][$klucz] . '.');
+}
+
+$odpowiedz_do = '';
+foreach (['email', 'kontakt'] as $k) {
+    if (!empty($dane[$k]) && filter_var($dane[$k], FILTER_VALIDATE_EMAIL)) { $odpowiedz_do = $dane[$k]; break; }
+}
+if ($nazwa === 'potwierdzenie-rezerwacji' && $odpowiedz_do === '') bledna_strona('Podaj poprawny adres e-mail.');
+
+$tresc = $f['temat'] . " – foxfotograf.pl\n\n";
+foreach ($f['pola'] as $klucz => $etykieta) {
+    if ($dane[$klucz] !== '') $tresc .= $etykieta . ":\n" . $dane[$klucz] . "\n\n";
+}
+$tresc .= "—\nWysłano: " . date('Y-m-d H:i') . "\nIP: " . ($_SERVER['REMOTE_ADDR'] ?? '?') . "\n";
+
+$kto = $dane['imie'] ?: $dane['imie_nazwisko'] ?? '';
+$temat = '=?UTF-8?B?' . base64_encode($f['temat'] . ($kto ? ': ' . $kto : '')) . '?=';
+$naglowki = [
+    'From: FoxFotograf <' . $NADAWCA . '>',
+    'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: 8bit',
+    'MIME-Version: 1.0',
+];
+if ($odpowiedz_do) $naglowki[] = 'Reply-To: ' . $odpowiedz_do;
+
+$ok = mail($ODBIORCA, $temat, $tresc, implode("\r\n", $naglowki), '-f' . $NADAWCA);
+if (!$ok) bledna_strona('Serwer nie wysłał wiadomości. Zadzwoń proszę: {{ strona.kontakt.telefon }}.');
+
+header('Location: /dziekuje/', true, 303);
