@@ -27,7 +27,7 @@
 <a class="hp skip" href="#tresc">Przejdź do treści</a>
 <header class="hdr" id="top">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="FoxFotograf – strona główna"><b>Fox<i>Fotograf</i></b><span>Marcin Lis</span></a>
+    <a class="logo" href="/" aria-label="Fox Fotograf – strona główna">{% include "logo.svg" %}<span class="wm"><b>Fox <i>Fotograf</i></b><span>Marcin Lis</span></span></a>
     <nav class="nav" aria-label="Główne menu">
       <a href="/#slub">Ślub</a>
       <a href="/#komunia">Komunie i sesje</a>
@@ -35,7 +35,7 @@
       <div class="dd">
         <button type="button" aria-haspopup="true" aria-expanded="false">Usługi <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6"/></svg></button>
         <div class="dd-menu">
-          <a href="/#uslugi">Zdjęcia do dokumentów<small>Dowód, paszport, prawo jazdy – od ręki</small></a>
+          <a href="/#uslugi">Zdjęcia do dokumentów<small>Dowód, paszport, prawo jazdy, wiza – od ręki</small></a>
           <a href="/#uslugi">Reprodukcje i renowacja<small>Ratowanie starych fotografii</small></a>
           <a href="/#uslugi">Cyfryzacja kaset VHS<small>Nagrania rodzinne do MP4</small></a>
           <a href="/#uslugi">Fotografia produktowa<small>Packshoty do sklepów i na Allegro</small></a>
@@ -56,7 +56,7 @@
 
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <div class="mnav-top">
-    <span class="logo"><b>Fox<i>Fotograf</i></b></span>
+    <span class="logo">{% include "logo.svg" %}<span class="wm"><b>Fox <i>Fotograf</i></b></span></span>
     <button type="button" aria-label="Zamknij menu" id="mclose"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M6 6l14 14M20 6L6 20" stroke="currentColor" stroke-width="1.7"/></svg></button>
   </div>
   <a class="big" href="/#slub">Ślub</a>
@@ -83,7 +83,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© {{ rok }} FoxFotograf · Marcin Lis · Sulmierzyce</span>
+    <span class="logo" style="gap:10px">{% include "logo.svg" %}<span>© {{ rok }} Fox Fotograf · Marcin Lis · Sulmierzyce</span></span>
     <nav aria-label="Dokumenty">
       <a href="/aktualnosci/">Aktualności</a>
       <a href="/regulamin/">Regulamin</a>
