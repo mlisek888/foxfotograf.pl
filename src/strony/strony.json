@@ -1,0 +1,4 @@
+{
+  "layout": "strona.njk",
+  "permalink": "/{{ page.fileSlug }}/"
+}

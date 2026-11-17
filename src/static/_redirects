@@ -1,0 +1,23 @@
+# Stare adresy z WordPressa -> nowa strona (żeby linki z Google i wizytówek dalej działały)
+/oferta/                 /#slub              301
+/oferta-slub/            /#slub              301
+/sesja-komunia/          /#komunia           301
+/fotobudka/              /#fotobudki         301
+/reprodukcje/            /#uslugi            301
+/studio/                 /#uslugi            301
+/kontakt/                /#kontakt           301
+/strefa-klienta/         /#strefa-klienta    301
+/galerie-klientow/       /#strefa-klienta    301
+/komunia-sulmierzyce/    /#strefa-klienta    301
+/ai/                     /                   301
+/aparat/                 /                   301
+/fotobudka-retro/        /aktualnosci/fotobudka-retro/                301
+/twoje-wspomnienia-zasluguja-na-prywatnosc-uruchomilem-bezpieczna-chmure-nextcloud/  /aktualnosci/prywatna-chmura-nextcloud/  301
+/%F0%9F%8E%9E%EF%B8%8F-ocal-swoje-wspomnienia-cyfryzacja-kaset-vhs/  /aktualnosci/cyfryzacja-kaset-vhs/  301
+/%f0%9f%8e%9e%ef%b8%8f-ocal-swoje-wspomnienia-cyfryzacja-kaset-vhs/  /aktualnosci/cyfryzacja-kaset-vhs/  301
+/haslo-klasyczna-zabawa-profesjonalna-jakosc-%F0%9F%93%B8/  /aktualnosci/fotobudka-klasyczna-zabawa/  301
+/haslo-klasyczna-zabawa-profesjonalna-jakosc-%f0%9f%93%b8/  /aktualnosci/fotobudka-klasyczna-zabawa/  301
+/category/*              /aktualnosci/       301
+/feed/*                  /aktualnosci/       301
+/wp-admin/*              /                   301
+/wp-login.php            /                   301

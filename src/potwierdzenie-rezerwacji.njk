@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Potwierdzenie rezerwacji
+opis: Formularz potwierdzenia rezerwacji terminu w FoxFotograf.
+permalink: /potwierdzenie-rezerwacji/
+---
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Rezerwacja</span>
+    <h1>Potwierdzenie rezerwacji</h1>
+    <p>Bardzo się cieszę na naszą współpracę. Aby ostatecznie potwierdzić rezerwację terminu i wpisać Wasze wydarzenie do kalendarza, uzupełnij poniższe dane i zaakceptuj regulamin usług.</p>
+  </div>
+</div>
+<section class="article">
+  <div class="wrap">
+    <form class="form-light" style="max-width:720px;margin-inline:auto" name="potwierdzenie-rezerwacji" method="POST" action="/dziekuje/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="potwierdzenie-rezerwacji">
+      <p class="hp"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label for="r-name">Imię i nazwisko zleceniodawcy<input id="r-name" name="imie_nazwisko" autocomplete="name" required></label>
+      <div class="row2">
+        <label for="r-phone">Numer telefonu<input id="r-phone" name="telefon" type="tel" autocomplete="tel" placeholder="500 000 000" required></label>
+        <label for="r-email">Adres e-mail<input id="r-email" name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <label for="r-event">Data, miejsce i rodzaj wydarzenia<input id="r-event" name="wydarzenie" placeholder="np. 12.06.2027, Krotoszyn, wesele" required></label>
+      <label class="check" for="r-ok"><input id="r-ok" type="checkbox" name="akceptacja_regulaminu" value="tak" required><span>Oświadczam, że zapoznałem/am się i w pełni akceptuję <a href="/regulamin/" target="_blank">Regulamin świadczenia usług fotograficznych</a>.</span></label>
+      <button class="btn btn-brass" type="submit" style="justify-content:center">Potwierdzam rezerwację</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Aktualności
+opis: Nowości w ofercie FoxFotograf – fotobudki, cyfryzacja VHS, galerie dla klientów.
+permalink: /aktualnosci/
+---
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Aktualności</span>
+    <h1>Co nowego w FoxFotograf</h1>
+  </div>
+</div>
+<section class="article">
+  <div class="wrap">
+    <div class="news-grid" style="margin-top:0">
+      {%- for w in collections.wpisy %}
+      <a class="news-card" href="{{ w.url }}">
+        {%- if w.data.zdjecie %}<img src="{{ w.data.zdjecie }}" alt="" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px">{% endif %}
+        <div class="body"><time datetime="{{ w.date | dataISO }}">{{ w.date | dataPL }}</time><h3>{{ w.data.title }}</h3><p>{{ w.data.opis }}</p></div>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

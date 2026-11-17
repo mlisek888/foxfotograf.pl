@@ -1,0 +1,89 @@
+# Konfiguracja panelu Pages CMS (https://app.pagescms.org)
+media:
+  input: src/img/uploads
+  output: /img/uploads
+  extensions: [jpg, jpeg, png, webp, avif]
+
+content:
+  - name: wpisy
+    label: Aktualności
+    type: collection
+    path: src/wpisy
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Tytuł
+        type: string
+        required: true
+      - name: date
+        label: Data
+        type: date
+        required: true
+      - name: zdjecie
+        label: Zdjęcie główne
+        description: Możesz wrzucić pełny plik z aparatu – strona sama go zmniejszy.
+        type: image
+      - name: opis
+        label: Krótki opis (na kafelek i do Google)
+        type: text
+        required: true
+      - name: body
+        label: Treść
+        type: rich-text
+
+  - name: strona
+    label: Ustawienia strony
+    type: file
+    path: src/_data/strona.json
+    fields:
+      - name: hero
+        label: Baner na górze strony
+        type: object
+        fields:
+          - { name: naglowek, label: Nagłówek (biały), type: string }
+          - { name: naglowek_akcent, label: Nagłówek (złoty), type: string }
+          - { name: podtytul, label: Tekst pod nagłówkiem, type: text }
+          - { name: zdjecie, label: Zdjęcie w tle, type: image }
+      - name: kontakt
+        label: Dane kontaktowe
+        type: object
+        fields:
+          - { name: telefon, label: Telefon, type: string }
+          - { name: email, label: E-mail, type: string }
+          - { name: adres_ulica, label: Ulica, type: string }
+          - { name: adres_miasto, label: Kod i miasto, type: string }
+      - name: fotobudki
+        label: Fotobudki
+        type: object
+        fields:
+          - { name: komunikat, label: Komunikat o rezerwacjach, type: string }
+      - name: galerie
+        label: Galerie dla klientów (Strefa klienta)
+        type: object
+        list: true
+        fields:
+          - { name: nazwa, label: Nazwa, type: string }
+          - { name: link, label: Link do galerii, type: string }
+      - name: galeria_glowna
+        label: Link do panelu galerii (opcjonalnie)
+        type: string
+      - name: instrukcja_sklepu
+        label: Link do instrukcji Photonesto
+        type: string
+
+  - name: strony
+    label: Dokumenty (regulamin, RODO)
+    type: collection
+    path: src/strony
+    fields:
+      - { name: title, label: Tytuł, type: string, required: true }
+      - { name: naglowek_maly, label: Mały napis nad tytułem, type: string }
+      - { name: opis, label: Opis do Google, type: text }
+      - { name: body, label: Treść, type: rich-text }

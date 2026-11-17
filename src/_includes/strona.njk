@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">{{ naglowek_maly or "FoxFotograf" }}</span>
+    <h1>{{ title }}</h1>
+  </div>
+</div>
+<article class="article">
+  <div class="wrap"><div class="prose">{{ content | safe }}</div></div>
+</article>
