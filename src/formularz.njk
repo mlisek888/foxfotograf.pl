@@ -65,7 +65,7 @@ foreach ($f['pola'] as $klucz => $etykieta) {
 }
 $tresc .= "—\nWysłano: " . date('Y-m-d H:i') . "\nIP: " . ($_SERVER['REMOTE_ADDR'] ?? '?') . "\n";
 
-$kto = $dane['imie'] ?: $dane['imie_nazwisko'] ?? '';
+$kto = $dane['imie'] ?? $dane['imie_nazwisko'] ?? '';
 $temat = '=?UTF-8?B?' . base64_encode($f['temat'] . ($kto ? ': ' . $kto : '')) . '?=';
 $naglowki = [
     'From: FoxFotograf <' . $NADAWCA . '>',
