@@ -16,7 +16,7 @@ function bledna_strona($komunikat) {
        . '<title>Nie wysłano wiadomości</title><link rel="stylesheet" href="/css/style.css"></head><body>'
        . '<div class="page-head"><div class="wrap"><span class="eyebrow">Formularz</span><h1>Nie udało się wysłać</h1>'
        . '<p>' . htmlspecialchars($komunikat) . '</p>'
-       . '<p style="margin-top:28px"><a class="btn" href="javascript:history.back()" style="background:#d2a75a;color:#141210">Wróć do formularza</a></p>'
+       . '<p style="margin-top:28px"><a class="btn btn-red" href="javascript:history.back()">Wróć do formularza</a></p>'
        . '</div></div></body></html>';
     exit;
 }

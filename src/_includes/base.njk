@@ -13,10 +13,10 @@
 <meta property="og:description" content="{{ opis or site.opis }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:image" content="{{ site.url }}/og.jpg">
-<meta name="theme-color" content="#111113">
+<meta name="theme-color" content="#EEE6D5">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/lora-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/style.css">
 <script type="application/ld+json">
@@ -30,7 +30,8 @@
     <a class="logo" href="/" aria-label="Fox Fotograf – strona główna">{% include "logo.svg" %}<span class="wm"><b>Fox <i>Fotograf</i></b><span>Marcin Lis</span></span></a>
     <nav class="nav" aria-label="Główne menu">
       <a href="/#slub">Ślub</a>
-      <a href="/#komunia">Komunie i sesje</a>
+      <a href="/#komunia">Komunie</a>
+      <a href="/#sesje">Studio</a>
       <a href="/#fotobudki">Fotobudki</a>
       <a href="/#aparat">FoX Aparat</a>
       <div class="dd">
@@ -42,7 +43,6 @@
           <a href="/#uslugi">Fotografia produktowa<small>Packshoty do sklepów i na Allegro</small></a>
         </div>
       </div>
-      <a href="/#o-mnie">O mnie</a>
       <a href="/#strefa-klienta">Strefa klienta</a>
     </nav>
     <div class="hdr-cta">
@@ -61,7 +61,8 @@
     <button type="button" aria-label="Zamknij menu" id="mclose"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M6 6l14 14M20 6L6 20" stroke="currentColor" stroke-width="1.7"/></svg></button>
   </div>
   <a class="big" href="/#slub">Ślub</a>
-  <a class="big" href="/#komunia">Komunie i sesje</a>
+  <a class="big" href="/#komunia">Komunie</a>
+  <a class="big" href="/#sesje">Studio</a>
   <a class="big" href="/#fotobudki">Fotobudki</a>
   <a class="big" href="/#aparat">FoX Aparat</a>
   <div class="sub">
@@ -75,7 +76,7 @@
   <a class="big" href="/#strefa-klienta">Strefa klienta</a>
   <div class="foot">
     <a class="btn" href="/#kontakt">Zapytaj o termin</a>
-    <a href="tel:{{ strona.kontakt.telefon | telLink }}" style="font-family:var(--f-mono);color:#a19c93;text-align:center;text-decoration:none">tel. {{ strona.kontakt.telefon }}</a>
+    <a href="tel:{{ strona.kontakt.telefon | telLink }}" style="font-family:var(--f-mono);color:var(--muted);text-align:center;text-decoration:none">tel. {{ strona.kontakt.telefon }}</a>
   </div>
 </nav>
 
@@ -87,6 +88,7 @@
   <div class="wrap">
     <span class="logo" style="gap:10px">{% include "logo.svg" %}<span>© {{ rok }} Fox Fotograf · Marcin Lis · Sulmierzyce</span></span>
     <nav aria-label="Dokumenty">
+      <a href="/#o-mnie">O mnie</a>
       <a href="/aktualnosci/">Aktualności</a>
       <a href="/regulamin/">Regulamin</a>
       <a href="/polityka-prywatnosci/">Polityka prywatności</a>

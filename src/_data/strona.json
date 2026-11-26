@@ -1,9 +1,9 @@
 {
   "hero": {
-    "naglowek": "Światło. Emocje.",
-    "naglowek_akcent": "Twoja historia.",
-    "podtytul": "Reportaże ślubne, sesje komunijne i fotobudki, które rozkręcają imprezy. Od ponad 20 lat zatrzymuję najważniejsze chwile.",
-    "zdjecie": "/img/hero-slub-wrzosy.jpg"
+    "naglowek": "Śluby, studio i fotobudki.",
+    "naglowek_akcent": "Wszystko w jednym miejscu.",
+    "podtytul": "Reportaże ślubne, portrety w studiu i fotobudki, które rozkręcają imprezy. Wybierz, czego szukasz.",
+    "zdjecie": "/img/slub-hero-ola-krystian.jpg"
   },
   "kontakt": {
     "telefon": "502 284 071",
@@ -15,8 +15,14 @@
     "komunikat": "Rezerwacje na sezony 2026 i 2027 są otwarte."
   },
   "galerie": [
-    { "nazwa": "Komunia Sulmierzyce 2025", "link": "https://foxfotografpl.photonesto.com/g/komunia-sulmierzyce-2025" },
-    { "nazwa": "Komunia Sulmierzyce 2024", "link": "https://foxfotografpl.photonesto.com/g/komunia-sulmierzyce-2024" }
+    {
+      "nazwa": "Komunia Sulmierzyce 2025",
+      "link": "https://foxfotografpl.photonesto.com/g/komunia-sulmierzyce-2025"
+    },
+    {
+      "nazwa": "Komunia Sulmierzyce 2024",
+      "link": "https://foxfotografpl.photonesto.com/g/komunia-sulmierzyce-2024"
+    }
   ],
   "galeria_glowna": "",
   "instrukcja_sklepu": "https://help.photonesto.com/pl/articles/11767498-jak-korzystac-z-photonesto-instrukcja-obslugi-galerii-zdjec"
