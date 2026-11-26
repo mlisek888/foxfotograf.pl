@@ -392,3 +392,10 @@ footer .logo>span{font:inherit;text-transform:none;letter-spacing:0;color:inheri
 .wed-row .wide-photo img{aspect-ratio:3/2}
 .wed-row .wide-photo:last-child{transform:rotate(1deg);margin-top:40px}
 @media (max-width:860px){.wed-row{grid-template-columns:1fr}.wed-row .wide-photo:last-child{transform:none;margin-top:0}.wed-row .wide-photo img{aspect-ratio:3/2}}
+
+/* ---------- portret ---------- */
+.about-img img{aspect-ratio:4/5;filter:none}
+.me{display:flex;align-items:center;gap:14px;margin-top:4px}
+.me img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--paper);box-shadow:0 6px 14px -8px rgba(28,24,20,.5)}
+.me span{display:grid;gap:2px;font-size:.92rem;color:var(--ink-2)}
+.me b{font:600 1.1rem/1.2 var(--f-display);color:var(--ink)}
