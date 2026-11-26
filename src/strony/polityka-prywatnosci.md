@@ -9,7 +9,7 @@ Ta polityka wyjaśnia, jakie dane osobowe przetwarzamy, gdy korzystasz ze strony
 
 Administratorem danych jest **Marcin Lis, prowadzący działalność pod nazwą Fox Fotograf**, ul. Władysława Broniewskiego 21, 63-750 Sulmierzyce.
 
-W sprawach danych osobowych napisz na [**marcin@foxfotograf.pl**](mailto:marcin@foxfotograf.pl) albo zadzwoń: 502 284 071.
+W sprawach danych osobowych napisz na [**marcin@foxfotograf.pl**](mailto:marcin@foxfotograf.pl) albo zadzwoń: 502&nbsp;284&nbsp;071.
 
 ## 2. Formularz kontaktowy i zapytania
 
