@@ -5,7 +5,7 @@ export default function (eleventyConfig) {
   // Dzięki temu w panelu można wrzucać pełne pliki prosto z aparatu.
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     formats: ["avif", "webp", "jpeg"],
-    widths: [480, 960, 1600, 2400],
+    widths: [480, 960, 1600, 2400, "auto"],
     failOnError: false,
     htmlOptions: {
       imgAttributes: { loading: "lazy", decoding: "async", sizes: "100vw" },
@@ -14,6 +14,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addGlobalData("rok", new Date().getFullYear());
+  eleventyConfig.addGlobalData("wersja", Date.now().toString(36));
   eleventyConfig.addPassthroughCopy({ "src/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
   eleventyConfig.addPassthroughCopy("src/css");
