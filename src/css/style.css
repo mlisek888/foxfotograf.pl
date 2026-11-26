@@ -385,3 +385,10 @@ footer .logo>span{font:inherit;text-transform:none;letter-spacing:0;color:inheri
 .party-grid .p-d{grid-column:2;grid-row:2}
 .party-grid .p-e{grid-column:3;grid-row:2}
 @media (max-width:820px){.party-grid{grid-auto-flow:dense;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:260px}.party-grid .p-a,.party-grid .p-c{grid-column:auto;grid-row:span 2}.party-grid .p-b{grid-column:1/-1;grid-row:auto}.party-grid .p-d,.party-grid .p-e{grid-column:auto;grid-row:auto}.party-grid .p-f,.party-grid .p-g{grid-column:1/-1;grid-row:auto;transform:none}.party-grid .p-c{transform:none}}
+
+/* ---------- ślub: dwie duże odbitki ---------- */
+.wed-row{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;margin-top:clamp(56px,8vw,100px);align-items:start}
+.wed-row .wide-photo{margin:0}
+.wed-row .wide-photo img{aspect-ratio:3/2}
+.wed-row .wide-photo:last-child{transform:rotate(1deg);margin-top:40px}
+@media (max-width:860px){.wed-row{grid-template-columns:1fr}.wed-row .wide-photo:last-child{transform:none;margin-top:0}.wed-row .wide-photo img{aspect-ratio:3/2}}
