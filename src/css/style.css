@@ -374,7 +374,9 @@ footer .logo>span{font:inherit;text-transform:none;letter-spacing:0;color:inheri
 
 /* ---------- reportaże okolicznościowe ---------- */
 .party{padding-top:0}
-.party-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,330px);gap:18px}
+.party-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,330px) 400px;gap:18px}
+.party-grid .p-f{grid-column:1/3;grid-row:3}
+.party-grid .p-g{grid-column:3/5;grid-row:3;transform:rotate(-.8deg)}
 .party-grid .print{grid-template-rows:1fr auto;min-height:0}
 .party-grid .print img{height:100%;min-height:0;aspect-ratio:auto}
 .party-grid .p-a{grid-column:1;grid-row:1/3}
@@ -382,4 +384,4 @@ footer .logo>span{font:inherit;text-transform:none;letter-spacing:0;color:inheri
 .party-grid .p-c{grid-column:4;grid-row:1/3;transform:rotate(1.2deg)}
 .party-grid .p-d{grid-column:2;grid-row:2}
 .party-grid .p-e{grid-column:3;grid-row:2}
-@media (max-width:820px){.party-grid{grid-auto-flow:dense;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:260px}.party-grid .p-a,.party-grid .p-c{grid-column:auto;grid-row:span 2}.party-grid .p-b{grid-column:1/-1;grid-row:auto}.party-grid .p-d,.party-grid .p-e{grid-column:auto;grid-row:auto}.party-grid .p-c{transform:none}}
+@media (max-width:820px){.party-grid{grid-auto-flow:dense;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:260px}.party-grid .p-a,.party-grid .p-c{grid-column:auto;grid-row:span 2}.party-grid .p-b{grid-column:1/-1;grid-row:auto}.party-grid .p-d,.party-grid .p-e{grid-column:auto;grid-row:auto}.party-grid .p-f,.party-grid .p-g{grid-column:1/-1;grid-row:auto;transform:none}.party-grid .p-c{transform:none}}
