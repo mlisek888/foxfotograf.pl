@@ -52,10 +52,10 @@ section{padding-block:clamp(72px,9vw,120px)}
 .btn-ghost:hover{background:rgba(127,110,90,.12)}
 
 /* ---------- krawędź kliszy ---------- */
-.edge{height:34px;display:flex;align-items:center;gap:40px;padding:0 24px;overflow:hidden;white-space:nowrap;color:var(--amber);font:500 .72rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;
-  background-color:var(--dark);background-image:repeating-linear-gradient(90deg,transparent 0 14px,var(--bg) 14px 24px,transparent 24px 38px);background-size:38px 8px;background-repeat:repeat-x;background-position:0 4px}
+.edge{height:46px;display:flex;align-items:flex-end;gap:40px;padding:0 24px 9px;line-height:1;overflow:hidden;white-space:nowrap;color:var(--amber);font:500 .72rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;
+  background-color:var(--dark);background-image:repeating-linear-gradient(90deg,transparent 0 14px,var(--bg) 14px 24px,transparent 24px 38px);background-size:38px 9px;background-repeat:repeat-x;background-position:0 6px}
 .edge span{flex:none}
-.edge-stats{background-position:0 calc(100% - 4px)}
+.edge-stats{align-items:flex-start;padding:10px 24px 0;background-position:0 calc(100% - 6px)}
 
 /* ---------- nagłówek ---------- */
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(238,230,213,.94);backdrop-filter:saturate(1.2) blur(8px);color:var(--ink);border-bottom:1px solid var(--line)}
@@ -321,7 +321,7 @@ form .btn{justify-content:center;margin-top:4px}
 
 /* ---------- stopka ---------- */
 footer{background:var(--dark);color:var(--on-dark-2);font-size:.88rem;padding-bottom:env(safe-area-inset-bottom,0px)}
-footer::before{content:"▸ 36   FOX 400   36A   KONIEC FILMU   ▸ 37   FOX 400   37A   ▸ 38   FOX 400";display:block;white-space:pre;overflow:hidden;height:34px;line-height:34px;padding:0 24px;font:500 .72rem/34px var(--f-mono);letter-spacing:.14em;color:var(--amber);background-color:#120F0C;background-image:repeating-linear-gradient(90deg,transparent 0 14px,var(--bg) 14px 24px,transparent 24px 38px);background-size:38px 8px;background-repeat:repeat-x;background-position:0 4px}
+footer::before{content:"▸ 36   FOX 400   36A   KONIEC FILMU   ▸ 37   FOX 400   37A   ▸ 38   FOX 400";display:block;white-space:pre;overflow:hidden;height:46px;box-sizing:border-box;padding:26px 24px 0;font:500 .72rem/1 var(--f-mono);letter-spacing:.14em;color:var(--amber);background-color:#120F0C;background-image:repeating-linear-gradient(90deg,transparent 0 14px,var(--bg) 14px 24px,transparent 24px 38px);background-size:38px 9px;background-repeat:repeat-x;background-position:0 6px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center;padding-block:36px}
 footer .logo{color:var(--on-dark-2)}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
