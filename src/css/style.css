@@ -399,3 +399,14 @@ footer .logo>span{font:inherit;text-transform:none;letter-spacing:0;color:inheri
 .me img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--paper);box-shadow:0 6px 14px -8px rgba(28,24,20,.5)}
 .me span{display:grid;gap:2px;font-size:.92rem;color:var(--ink-2)}
 .me b{font:600 1.1rem/1.2 var(--f-display);color:var(--ink)}
+
+/* ---------- ORŁY ---------- */
+.award{padding-top:0}
+.award-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(28px,4vw,48px);border:1.5px solid var(--ink);background:rgba(255,253,248,.55)}
+.award-box>*{min-width:0}
+.award-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.award-photos .print img{aspect-ratio:3/4}
+.award-photos .print:first-child{transform:rotate(-2deg)}
+.award-photos .print:last-child{transform:rotate(1.5deg);margin-top:30px}
+.award p:not(.lead){color:var(--ink-2);max-width:60ch}
+@media (max-width:860px){.award-box{grid-template-columns:1fr}}
